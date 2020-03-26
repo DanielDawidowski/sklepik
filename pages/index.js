@@ -1,7 +1,9 @@
-import Head from 'next/head'
+
 
 const Home = () => (
-  <h1>hi</h1>
+  <div>
+    <h1>Home</h1>
+  </div>
 )
 
 export default Home;

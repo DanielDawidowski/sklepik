@@ -1,7 +1,9 @@
-import Head from 'next/head'
+
 
 const Sell = () => (
-  <h1>hi from sell</h1>
+  <div>
+    <h1>Sell</h1>
+</div>
 )
 
 export default Sell;
