@@ -1,9 +1,9 @@
-
+import CreateEvent from '../components/CreateEvent';
 
 const Sell = () => (
   <div>
-    <h1>Sell</h1>
-</div>
+    <CreateEvent />
+  </div>
 )
 
 export default Sell;
