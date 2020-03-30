@@ -66,8 +66,7 @@ class CreateEvent extends React.Component {
     render() {
         return (
             <Mutation mutation={CREATE_EVENT_MUTATION} variables={this.state}>
-                {( createEvent, { loading, error }) => (
-                    
+                {( createEvent, { loading, error }) => (   
                     <form onSubmit={ async e => {
                         e.preventDefault();
                         const res = await createEvent();
