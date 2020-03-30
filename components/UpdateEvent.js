@@ -1,7 +1,7 @@
 import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Error from './ErrorMessage';
-import Router from 'next/router';
+
 
 const SINGLE_EVENT_QUERY = gql`
     query SINLE_EVENT_QUERY($id: ID!) {

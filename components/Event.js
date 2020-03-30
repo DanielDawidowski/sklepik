@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Link from 'next/link';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import DeleteEvent from './DeleteEvent';
 
 class Event extends Component {
     static propTypes = {
@@ -29,7 +30,7 @@ class Event extends Component {
                     }}>
                         <a>Edytuj</a>
                     </Link>
-                    <button>Usuń</button>
+                    <DeleteEvent id={event.id} >Usuń</DeleteEvent>
                     <button>Rezerwacja</button>
                 </div>
             </div>

@@ -28,7 +28,7 @@ const SingleEventStyles = styled.div`
 
 const SINGLE_EVENT_QUERY = gql`
     query SINGLE_ITEM_QUERY($id: ID!) {
-        item(where: { id: $id }) {
+        event(where: { id: $id }) {
             id
             title
             description
