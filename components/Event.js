@@ -12,7 +12,7 @@ class Event extends Component {
         const { event } = this.props
         return (
             <div>
-                {event.image && <img src={event.image} alt={event.title}/>}
+                {event.image && <img src={event.image} width="400" height="300" alt={event.title}/>}
                 <Link href={{
                     pathname: '/event',
                     query: { id: event.id }

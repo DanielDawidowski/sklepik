@@ -57,7 +57,7 @@ class SingleEvent extends Component {
                             <Head>
                                 <title>Sick Fits | {event.title}</title>
                             </Head>
-                            <img src={event.largeImage} alt={event.title} />
+                            <img  src={event.largeImage} alt={event.title} />
                             <div className="details">
                                 <h2>Viewing {event.title}</h2>
                                 <p>{event.description}</p>

@@ -1,6 +1,6 @@
 import CreateEvent from '../components/CreateEvent';
 
-const Sell = () => (
+const Sell = props => (
   <div>
     <CreateEvent />
   </div>

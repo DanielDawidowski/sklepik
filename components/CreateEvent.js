@@ -90,7 +90,7 @@ class CreateEvent extends React.Component {
                                     onChange={this.uploadFile}
                                     required 
                                 />
-                                {this.state.image && <img src={this.state.image} alt='Upload Preview' />}
+                                {this.state.image && <img width="200" src={this.state.image} alt='Upload Preview' />}
                             </label>
 
                             <label htmlFor="title">

@@ -108,7 +108,7 @@ class UpdateEvent extends React.Component {
                                             defaultValue={data.event.image} 
                                             required 
                                         />
-                                        {this.state.image && <img src={this.state.image} alt='Upload Preview' />}
+                                        {this.state.image && <img src={this.state.image} width="200" alt='Upload Preview' />}
                                     </label>
 
                                     <label htmlFor="title">
@@ -180,7 +180,7 @@ class UpdateEvent extends React.Component {
                             </form>
                             )}
                         </Mutation>
-                        )
+                    )
                 }}
             </Query>
         )
