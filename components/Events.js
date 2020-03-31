@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
@@ -28,12 +29,11 @@ const ItemsList = styled.div`
     margin: 0 auto;
 `;
 
-class Events extends React.Component {
+class Events extends Component {
     render() {
         return (
             <div>
                 <Pagination page={this.props.page}/>
-                <p>Events</p>
                 <Query 
                     query={ALL_EVENTS_QUERY}
                     variables={{

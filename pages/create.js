@@ -1,8 +1,11 @@
 import CreateEvent from '../components/CreateEvent';
+import PleaseSignIn from '../components/PleaseSignIn';
 
 const Create = props => (
-  <div>
-    <CreateEvent />
+  <div> 
+    <PleaseSignIn>
+      <CreateEvent />
+    </PleaseSignIn>
   </div>
 )
 
