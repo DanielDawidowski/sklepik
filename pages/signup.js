@@ -1,10 +1,12 @@
-import SignUp from '../components/Signup'
+import Signup from '../components/Signup';
+import Signin from '../components/Signin';
+
 
 const SignUpPage = props => (
     <div>
-        <SignUp />
-        <SignUp />
-        <SignUp />
+        <Signup />
+        <Signin />
+        <Signup />
     </div>
 )
 

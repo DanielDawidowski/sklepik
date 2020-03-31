@@ -1,28 +1,37 @@
 import Link from 'next/link';
 import User from './User';
+import NavStyles from './styles/NavStyles';
+import Signout from './Signout';
+
 
 const Nav = () => (
-    <div>
         <User>
-            {({ data: { me } }) => {
-                console.log(me);
-                if (me) return <p>{me.name}</p>
-                return null
+            { ({data}) => {
+                const me = data ? data.me : null
+                return (
+                    <NavStyles>
+                        {me && <p>{me.name}</p>}
+                        <Link href="/">
+                            <a>Home</a>
+                        </Link>
+                        <Link href="/events">
+                            <a>Wyjazdy</a>
+                        </Link>
+                        {me && (
+                            <>
+                                <Link href="/create">
+                                    <a>Utwórz Wyjazd</a>
+                                </Link>
+                                <Link href="/orders">
+                                    <a>Orders</a>
+                                </Link>
+                                <Signout />
+                            </>
+                            )}
+                    </NavStyles>
+                )
             }}
         </User>
-        <Link href="/sell">
-            <a>Sell</a>
-        </Link>
-        <Link href="/">
-            <a>Home</a>
-        </Link>
-        <Link href="/events">
-            <a>Wyjazdy</a>
-        </Link>
-        <Link href="/signup">
-            <a>Zaloguj</a>
-        </Link>
-    </div>
 )
 
 export default Nav;

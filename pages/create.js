@@ -1,9 +1,9 @@
 import CreateEvent from '../components/CreateEvent';
 
-const Sell = props => (
+const Create = props => (
   <div>
     <CreateEvent />
   </div>
 )
 
-export default Sell;
+export default Create;
