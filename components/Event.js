@@ -41,7 +41,11 @@ class Event extends Component {
                                     
                                     </>
                                 )}
-                            <button>Rezerwacja</button>
+                            <Link href={{
+                                pathname: '/registration'
+                            }}>
+                                    <a>Rezerwacja</a>
+                            </Link>
                         </div>
                     )
                 }}
