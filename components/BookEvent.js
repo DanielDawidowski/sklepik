@@ -1,8 +1,13 @@
 import { Mutation, Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import styled from 'styled-components';
 import Error from './ErrorMessage';
-import Router from 'next/router';
+// import Router from 'next/router';
 
+const BookForm = styled.div`
+    width: ${props => props.theme.maxWidth};
+    margin: 0 auto;
+`;
 
 const BOOK_EVENT_MUTATION = gql`
     mutation BOOK_EVENT_MUTATION(
@@ -44,7 +49,7 @@ class BookEvent extends React.Component {
 
     handleChange = (e) => {
         const { name, type, value } = e.target;
-        const val = type === 'number' ? parseFloat(value) : value
+        const val = type === 'number' && 'tel' ? parseFloat(value) : value
         this.setState({ [ name ] : val })
     };
 
@@ -56,16 +61,19 @@ class BookEvent extends React.Component {
                     <form onSubmit={ async e => {
                         e.preventDefault();
                         const res = await createBooking();
-                        Router.push('/')
+                        this.setState({ name: '', email: '', phone: 0, message: '', event: '' });
+                        // Router.push('/')
                     }}>
-                        <Query query={ALL_EVENTS_QUERY}>
+                        <Query query={ALL_EVENTS_QUERY} variables={{
+                            id: this.props.id
+                        }}>
                             {({data, loading, error }) => {
                                 if (loading) return <p>loading...</p>;
-                                    if (error) return <Error erorr={error} />;
-                                    console.log(typeof(data.events[0].title))
+                                if (error) return <Error erorr={error} />;
+                                console.log(data)
                                     return (
-                                        <>
-                                        <p> Utwórz wyjazd</p>
+                                        <BookForm>
+                                        <p>Zapisz się</p>
                                         <Error error={error} />
                                         <fieldset disabled={loading} aria-busy={loading}>
 
@@ -98,9 +106,10 @@ class BookEvent extends React.Component {
                                             <label htmlFor="phone">
                                                 Numer telefonu
                                                 <input 
-                                                    type="number" 
+                                                    type="tel" 
                                                     id='phone' 
                                                     name="phone"
+                                                    minLength="9"
                                                     placeholder="Numer telefonu" 
                                                     onChange={this.handleChange}
                                                     value={this.state.phone} 
@@ -114,10 +123,10 @@ class BookEvent extends React.Component {
                                                     id='event' 
                                                     name="event"
                                                     onChange={this.handleChange}
-                                                    value={this.state.event} 
+                                                    defaultValue={this.state.event} 
                                                     required 
                                                 >
-                                                <option disabled>--WYBIERZ--</option>           
+                                                    <option>{this.props.title}</option>
                                                 {data.events.map(event => <option key={event.id}>{event.title}</option>)}       
                                                 </select>
                                             </label>
@@ -135,7 +144,7 @@ class BookEvent extends React.Component {
                                             </label>
                                             <button type="submit">Zapisz się</button>
                                         </fieldset>
-                                        </>
+                                        </BookForm>
                                     )   
                                 }}
                             </Query>

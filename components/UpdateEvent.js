@@ -1,6 +1,7 @@
 import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Error from './ErrorMessage';
+import Router from 'next/router';
 
 
 const SINGLE_EVENT_QUERY = gql`
@@ -63,23 +64,6 @@ class UpdateEvent extends React.Component {
         console.log("updated")
     }
 
-    uploadFile = async e => {
-        console.log('uploading file...');
-        const files = e.target.files;
-        const data = new FormData();
-        data.append('file', files[0]);
-        data.append('upload_preset', 'sklepik');
-        const res = await fetch('https://api.cloudinary.com/v1_1/dandawid/image/upload', {
-            method: 'POST',
-            body: data
-        });
-        const file = await res.json();
-        console.log(file);
-        this.setState({
-            image: file.secure_url,
-            largeImage: file.eager[0].secure_url,
-        });
-    }
 
     render() {
         return (
@@ -92,24 +76,13 @@ class UpdateEvent extends React.Component {
                     return (
                     <Mutation mutation={ UPDATE_EVENT_MUTATION } variables={this.state}>
                         {( updateEvent, { loading, error }) => (
-                            
-                            <form onSubmit={ async e => this.updateEvent(e, updateEvent)}>
-                                <p> Utwórz wyjazd</p>
+                            <form onSubmit={ async e => {
+                                this.updateEvent(e, updateEvent);
+                                Router.push('/events')
+                            }}>
+                                <p> Edytuj wyjazd</p>
                                 <Error error={error} />
                                 <fieldset disabled={loading} aria-busy={loading}>
-                                    <label htmlFor="file">
-                                        Zdjęcie
-                                        <input 
-                                            type="file" 
-                                            id='file' 
-                                            name="file"
-                                            placeholder="Zdjęcie" 
-                                            onChange={this.uploadFile}
-                                            defaultValue={data.event.image} 
-                                            required 
-                                        />
-                                        {this.state.image && <img src={this.state.image} width="200" alt='Upload Preview' />}
-                                    </label>
 
                                     <label htmlFor="title">
                                         Tytuł

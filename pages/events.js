@@ -1,8 +1,10 @@
 import Events from '../components/Events';
+// import FotoBg from '../static/foto1';
+
 
 const EventsPage = props => (
   <div>
-    <Events page={parseFloat(props.query.page) || 1}/>
+    <Events />
   </div>
 )
 

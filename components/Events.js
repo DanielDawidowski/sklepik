@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
-import Pagination from './Pagination';
+// import Pagination from './Pagination';
 import Error from './ErrorMessage';
 import Event from './Event';
 import { perPage } from "../config";
@@ -33,12 +33,12 @@ class Events extends Component {
     render() {
         return (
             <div>
-                <Pagination page={this.props.page}/>
+                {/* <Pagination page={this.props.page}/> */}
                 <Query 
                     query={ALL_EVENTS_QUERY}
-                    variables={{
-                        skip: this.props.page * perPage - perPage,
-                    }}
+                    // variables={{
+                    //     skip: this.props.page * perPage - perPage,
+                    // }}
                 >
                     {({ data, error, loading }) => {
                         if(loading) return <p>Loading...</p>
@@ -51,7 +51,7 @@ class Events extends Component {
                         )
                     }}
                 </Query>
-                <Pagination page={this.props.page}/>
+                {/* <Pagination page={this.props.page}/> */}
             </div>
         )
     }

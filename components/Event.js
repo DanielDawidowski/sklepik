@@ -29,6 +29,7 @@ class Event extends Component {
                             <p>{event.description}</p>
                             <p>{event.start}</p>
                             <p>{event.end}</p>
+                            <p>{event.category}</p>
                                 {me && (
                                     <>
                                     <Link href={{
@@ -42,7 +43,8 @@ class Event extends Component {
                                     </>
                                 )}
                             <Link href={{
-                                pathname: '/registration'
+                                pathname: '/registration',
+                                query: { id: event.id },
                             }}>
                                     <a>Rezerwacja</a>
                             </Link>

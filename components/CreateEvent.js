@@ -13,6 +13,7 @@ const CREATE_EVENT_MUTATION = gql`
         $price: Int!
         $start: String!
         $end: String!
+        $category: String!
     ) {
         createEvent(
             title: $title
@@ -22,6 +23,7 @@ const CREATE_EVENT_MUTATION = gql`
             price: $price
             start: $start
             end: $end
+            category: $category
         ) {
             id
         }
@@ -37,6 +39,7 @@ class CreateEvent extends React.Component {
         price: 0,
         start: '',
         end: '',
+        category: '',
     };
 
     handleChange = (e) => {
@@ -142,6 +145,20 @@ class CreateEvent extends React.Component {
                                     value={this.state.end} 
                                     required 
                                 />
+                            </label>
+
+                            <label htmlFor="category">
+                                Mazury czy w Góry
+                                <select
+                                    id='category' 
+                                    name="category"
+                                    onChange={this.handleChange}
+                                    defaultValue={this.state.category} 
+                                    required 
+                                >
+                                    <option>Mazury</option>
+                                    <option>Góry</option>
+                                </select>
                             </label>
 
                             <label htmlFor="description">

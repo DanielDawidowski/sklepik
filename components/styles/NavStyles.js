@@ -4,9 +4,10 @@ const NavStyles = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
-  justify-self: center;
+  justify-self: flex-end;
   font-size: 2rem;
-  a,
+  height: 5vh;
+   a,
   button {
     padding: 1rem 3rem;
     display: flex;
@@ -19,25 +20,14 @@ const NavStyles = styled.ul`
     border: 0;
     cursor: pointer;
     font-weight: 700;
-    color: ${props => props.theme.black};
+    color: ${props => props.theme.yellow};
     @media (max-width: 700px) {
       font-size: 10px;
       padding: 0 10px;
     }
-    &:before {
-      content: '';
-      width: 2px;
-      background: ${props => props.theme.lightgrey};
-      height: 100%;
-      left: 0;
-      position: absolute;
-      transform: skew(-20deg);
-      top: 0;
-      bottom: 0;
-    }
     &:after {
       height: 2px;
-      background: red;
+      background: ${props => props.theme.yellow};
       content: '';
       width: 0;
       position: absolute;

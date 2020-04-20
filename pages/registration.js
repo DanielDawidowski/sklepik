@@ -1,9 +1,12 @@
-import BookEvent from '../components/BookEvent'
+import BookEvent from '../components/BookEvent';
+import Header from '../components/Header';
 
-const registration = props => (
-    <>
-        <BookEvent/>
-    </>
+
+const Event = props => (
+    <div>
+        <Header />
+        <BookEvent id={props.query.id}/>
+    </div>
 )
 
-export default registration;
+export default Event;

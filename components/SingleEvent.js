@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Link from 'next/link';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
@@ -10,7 +11,6 @@ import formatMoney from '../lib/formatMoney';
 const SingleEventStyles = styled.div`
     max-width: 1200px;
     margin: 2rem auto;
-
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
@@ -36,6 +36,7 @@ const SINGLE_EVENT_QUERY = gql`
             price
             start
             end
+            category
         }
     }
 `;
@@ -64,6 +65,13 @@ class SingleEvent extends Component {
                                 <h5>{formatMoney(event.price)}</h5>
                                 <p>{event.start}</p>
                                 <p>{event.end}</p>
+                                <p>{event.category === "Góry" ? "brown" : "green"}</p>
+                                <Link href={{
+                                    pathname: '/registration',
+                                    query: { id: event.id },
+                                }}>
+                                    <a>Rezerwacja</a>
+                                </Link>
                             </div>
                         </SingleEventStyles>
                     )
